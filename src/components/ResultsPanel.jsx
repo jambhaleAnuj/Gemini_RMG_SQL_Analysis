@@ -10,6 +10,7 @@ import {
   Download,
 } from "lucide-react";
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import excelParser from "../utils/excelParser";
 
 const ResultsPanel = ({
@@ -135,11 +136,21 @@ const ResultsPanel = ({
             <div className="p-2 bg-primary-500/10 rounded-lg mt-0.5">
               <BarChart2 className="w-5 h-5 text-primary-400" />
             </div>
-            <div>
-              <h4 className="font-medium text-dark-200 mb-1">Analysis</h4>
-              <p className="text-sm text-dark-300 leading-relaxed whitespace-pre-wrap">
-                {explanation}
-              </p>
+            <div className="flex-1 min-w-0">
+              <h4 className="font-medium text-dark-200 mb-2">Analysis</h4>
+              <div
+                className="prose prose-invert prose-sm max-w-none 
+                            prose-headings:text-dark-200 prose-headings:font-semibold prose-headings:mt-4 prose-headings:mb-2
+                            prose-h3:text-base prose-h4:text-sm
+                            prose-p:text-dark-300 prose-p:leading-relaxed prose-p:my-2
+                            prose-strong:text-dark-200 prose-strong:font-semibold
+                            prose-ul:my-2 prose-ul:text-dark-300
+                            prose-li:my-0.5 prose-li:text-dark-300
+                            prose-code:text-primary-400 prose-code:bg-dark-700 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                            prose-a:text-primary-400 hover:prose-a:text-primary-300"
+              >
+                <ReactMarkdown>{explanation}</ReactMarkdown>
+              </div>
             </div>
           </div>
         </div>
