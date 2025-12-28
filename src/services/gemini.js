@@ -1,6 +1,6 @@
 // Gemini AI Service for Natural Language to SQL conversion
 const API_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models";
-const MODEL_ID = "gemini-3-flash-preview";
+const MODEL_ID = "gemini-2.5-flash-preview-09-2025";
 
 class GeminiService {
   constructor() {
