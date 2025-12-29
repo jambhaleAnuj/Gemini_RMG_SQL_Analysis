@@ -26,10 +26,12 @@ const DataTable = ({ data, title, showExport = true }) => {
       field: col,
       headerName: col,
       sortable: true,
-      filter: true,
+      filter: "agTextColumnFilter",
       resizable: true,
-      minWidth: 100,
-      flex: 1,
+      minWidth: 80,
+      maxWidth: 600,
+      wrapHeaderText: true,
+      autoHeaderHeight: true,
       hide: visibleColumns ? !visibleColumns.includes(col) : false,
       cellStyle: (params) => {
         // Style based on data type
@@ -39,16 +41,15 @@ const DataTable = ({ data, title, showExport = true }) => {
         }
         return null;
       },
+      // Display values as-is without comma formatting for numbers
       valueFormatter: (params) => {
         const value = params.value;
         if (value === null || value === undefined) return "";
-        if (typeof value === "number") {
-          // Format numbers with commas
-          return value.toLocaleString("en-US", {
-            maximumFractionDigits: 2,
-          });
-        }
-        return value;
+        return String(value);
+      },
+      // Tooltip to show full value on hover
+      tooltipValueGetter: (params) => {
+        return params.value != null ? String(params.value) : "";
       },
     }));
   }, [data, visibleColumns]);
@@ -73,6 +74,9 @@ const DataTable = ({ data, title, showExport = true }) => {
       filter: true,
       resizable: true,
       floatingFilter: true,
+      floatingFilterComponentParams: { suppressFilterButton: true },
+      suppressHeaderMenuButton: false,
+      cellClass: "truncate",
     }),
     []
   );
@@ -229,6 +233,12 @@ const DataTable = ({ data, title, showExport = true }) => {
           suppressRowClickSelection={true}
           enableCellTextSelection={true}
           ensureDomOrder={true}
+          autoSizeStrategy={{
+            type: "fitCellContents",
+            skipHeader: false,
+          }}
+          tooltipShowDelay={500}
+          tooltipInteraction={true}
         />
       </div>
 

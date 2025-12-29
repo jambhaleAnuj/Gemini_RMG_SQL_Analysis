@@ -131,6 +131,36 @@
 .ag-theme-custom .ag-cell {
   display: flex;
   align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-theme-custom .ag-cell.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Fix floating filter input styling */
+.ag-theme-custom .ag-floating-filter-input {
+  padding: 4px 8px !important;
+}
+
+.ag-theme-custom .ag-floating-filter {
+  border-bottom: 1px solid var(--ag-border-color);
+}
+
+/* Hide the empty filter button wrapper when button is suppressed */
+.ag-theme-custom .ag-floating-filter-button {
+  display: none;
+}
+
+/* Ensure proper text display without line breaks */
+.ag-theme-custom .ag-cell-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Recharts Custom Styles */
