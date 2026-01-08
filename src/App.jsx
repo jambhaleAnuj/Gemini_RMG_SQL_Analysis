@@ -15,6 +15,7 @@ import {
   Info,
   AlertTriangle,
 } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 // Components
 import FileUpload from "./components/FileUpload";
@@ -242,6 +243,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-dark-950 flex">
+      <Analytics />
       {/* Sidebar */}
       <aside
         className={`
